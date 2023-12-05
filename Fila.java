@@ -1,6 +1,5 @@
 package com.mycompany.aula1;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -8,7 +7,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Fila {
-      public void Fila() {
+      public static void main(String[] args) {
 
           /*Adrian Gabriel Santos Lopes - 01648052
           Jackson Lucas Mendonça Tenório De Almeida - 01656148
@@ -17,7 +16,7 @@ public class Fila {
           */
 
         // Caminho para o arquivo
-        String caminhoArquivo = "C:\\Users\\userbla\\Downloads\\Produto.txt";
+        String caminhoArquivo = "C:\\Users\\Nicolas\\Downloads\\Clientes2.txt";
 
         Queue<Registro>  filaRegpro = new LinkedList<>();
         
@@ -26,41 +25,42 @@ public class Fila {
             File arquivo = new File(caminhoArquivo);
             // Leitor do arquivo
             Scanner leitor = new Scanner(arquivo);
+            
             // Loop para ler cada linha do arquivo
-
-            while (leitor.hasNextLine()){
+        while (leitor.hasNextLine()){
                 String linha = leitor.nextLine();
-                int id = Integer.parseInt(linha.substring(0, 2));
-                String produto = linha.substring(3, 34);
-                String valor = linha.substring(36, 41);
-                double preco = Double.parseDouble(valor); // Converte a String valor em Double
-                preco = preco / 100; // Deixar o valor em real
-                int quantidade = Integer.parseInt(linha.substring(43, 45));
-                int categoria = Integer.parseInt(linha.substring(46, 47));
+                String[] parte = linha.split(";");
+                
+        //if para identificar erros na separação por split
+        if (parte.length >= 3) {
+                String cod = parte[0];
+                String cliente = parte[1];
+                String nacao = parte[2];
 
-                filaRegpro.add(new Registro(id, produto, preco, quantidade, categoria));
-            }
-              for (Registro prod : filaRegpro) {
-                    System.out.println("Id Produto: " + prod.getId());
-                    System.out.println("Produto: " + prod.getProduto());
-                    System.out.println("Preço: " + prod.getPreco());
-                    System.out.println("Quantidade: " + prod.getQuantidade());
-                    System.out.println("Categoria: " + prod.getCategoria() + "\n");
+            filaRegpro.add(new Registro(cod, cliente, nacao));
+        }
+           
+        else {
+                System.out.println("Linha do arquivo que não é uma informação sobre os clientes: " + linha);
+        }
+        }
+        for (Registro prod : filaRegpro) {
+                    System.out.println("Codigo do Cliente: " + prod.getCod());
+                    System.out.println("Cliente: " + prod.getCliente());
+                    System.out.println("País: " + prod.getNacao());
                     
                 }
 
-                for (int i = 1; i < 6; i++) {
+        for (int i = 1; i < 6; i++) {
                     filaRegpro.remove();
                 }
          System.out.println("---------------------------------------------------------------------------------\n");
          System.out.println("Depois de remover os elementos:\n");
 
         for (Registro prod : filaRegpro) {
-                    System.out.println("Id Produto: " + prod.getId());
-                    System.out.println("Produto: " + prod.getProduto());
-                    System.out.println("Preço: " + prod.getPreco());
-                    System.out.println("Quantidade: " + prod.getQuantidade());
-                    System.out.println("Categoria: " + prod.getCategoria() + "\n"); 
+                    System.out.println("Codigo do Cliente: " + prod.getCod());
+                    System.out.println("Cliente: " + prod.getCliente());
+                    System.out.println("País: " + prod.getNacao()); 
                 }
 
             // Fecha o Scanner leitor

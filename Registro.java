@@ -2,53 +2,35 @@ package com.mycompany.aula1;
 
 public class Registro {
     //Atributos
-    private int id;
-    private String produto;
-    private double preco;
-    private int quantidade;
-    private int categoria;
+    private String cod;
+    private String cliente;
+    private String nacao;
 
-    Registro(int id, String produto, double preco, int quantidade, int categoria) {
-        this.id = id;
-        this.produto = produto;
-        this.preco = preco;
-        this.quantidade = quantidade;
-        this.categoria = categoria;
+    Registro(String cod, String cliente, String nacao) {
+        this.cod = cod;
+        this.cliente = cliente;
+        this.nacao = nacao;
     }
 
-    void setId(int id) {
-        this.id = id;
+    void setCod(String Cod) {
+        this.cod = Cod;
     }
-    int getId() {
-        return id;
-    }
-
-    void setProduto(String produto) {
-        this.produto = produto;
-    }
-    String getProduto() {
-        return produto;
+    String getCod() {
+        return cod;
     }
 
-    void setPreco(double preco) {
-        this.preco = preco;
+    void setCliente(String cliente) {
+        this.cliente = cliente;
     }
-    double getPreco() {
-        return preco;
-    }
-
-    void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-    int getQuantidade() {
-        return quantidade;
+    String getCliente() {
+        return cliente;
     }
 
-    void setCategoria(int categoria) {
-        this.categoria = categoria;
+    void setNacao(String nacao) {
+        this.nacao = nacao;
     }
-    int getCategoria() {
-        return categoria;
+    String getNacao() {
+        return nacao;
     }
 }
 
