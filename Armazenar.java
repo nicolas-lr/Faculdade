@@ -8,16 +8,15 @@ public class Armazenar {
         ArrayList<Registro> listaProdutos = new ArrayList<>();
 
         // Armazenando novos produtos à ArrayList
-        listaProdutos.add(new Registro(1,"Suco de Uva", 25.00, 50, 1));
-        listaProdutos.add(new Registro(2, "Bolo de Chocolate", 15.00, 15, 4));
-        listaProdutos.add(new Registro(2, "Queijo Minas", 20.00, 78, 8));
+        listaProdutos.add(new Registro("BRK","Eduardo DuUu", "Brasil"));
+        listaProdutos.add(new Registro("JJL", "Nciolas","Kiribati"));
+        listaProdutos.add(new Registro("NAPX", "Idrian","Italia"));
 
         // Acessando os itens da lista de produtos
-        for (Registro produto: listaProdutos) {
-            System.out.println("Id Produto: " + produto.getId());
-            System.out.println("Produto: " + produto.getProduto());
-            System.out.println("Preço: " + produto.getPreco());
-            System.out.println("Quantidade: " + produto.getCategoria() + "\n");
-        }
+       for (Registro cliente: listaProdutos) {
+                    System.out.println("Codigo do Cliente: " + cliente.getCod());
+                    System.out.println("Cliente: " + cliente.getCliente());
+                    System.out.println("País: " + cliente.getNacao());
+            }
     }
 }

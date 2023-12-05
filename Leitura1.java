@@ -17,7 +17,7 @@ public class Leitura1 {
     public void leitura1() {
 
         // Armazena o caminho para o arquivo em um atributo
-        String caminhoArquivo = "C:\\Users\\rasch\\IdeaProjects\\ProjetoED\\src\\Produto.txt";
+        String caminhoArquivo = "C:\\Users\\Nicolas\\Downloads\\Clientes2.txt";
 
         // Criando o ArrayList
         ArrayList<Registro> listaProdutos = new ArrayList<>();
@@ -30,26 +30,25 @@ public class Leitura1 {
             Scanner leitor = new Scanner(arquivo); // "leitor" recebe o arquivo como parâmetro de entrada
 
             // Loop para ler cada linha do arquivo
-            while (leitor.hasNextLine()){ // Enquanto houver a próxima linha entra no bloco
-                String linha = leitor.nextLine(); // // "linha" recebe o conteúdo da linha atual do arquivo
-                int id = Integer.parseInt(linha.substring(0, 2));
-                String produto = linha.substring(3, 34);
-                String valor = linha.substring(36, 41);
-                double preco = Double.parseDouble(valor); // Converte a String valor em Double
-                preco = preco / 100; // Deixar o valor em real
-                int quantidade = Integer.parseInt(linha.substring(43, 45));
-                int categoria = Integer.parseInt(linha.substring(46, 47));
+            while (leitor.hasNextLine()){
+                String linha = leitor.nextLine();
+                String[] parte = linha.split(";");
+                
+        //if para identificar erros na separação por split
+        if (parte.length >= 3) {
+                String cod = parte[0];
+                String cliente = parte[1];
+                String nacao = parte[2];
 
-                listaProdutos.add(new Registro(id, produto, preco, quantidade, categoria));
+            listaProdutos.add(new Registro(cod, cliente, nacao));
+        }
             }
 
-            // Mostra cada produto e sua respectiva descrição
-            for (Registro produto: listaProdutos) {
-                    System.out.println("Id Produto: " + produto.getId());
-                    System.out.println("Produto: " + produto.getProduto());
-                    System.out.println("Preço: " + produto.getPreco());
-                    System.out.println("Quantidade: " + produto.getQuantidade());
-                    System.out.println("Categoria: " + produto.getCategoria() + "\n");
+            // Mostra cada cliente e seus respectivos dados
+            for (Registro cliente: listaProdutos) {
+                    System.out.println("Codigo do Cliente: " + cliente.getCod());
+                    System.out.println("Cliente: " + cliente.getCliente());
+                    System.out.println("País: " + cliente.getNacao());
             }
 
             // Fecha o Scanner leitor
