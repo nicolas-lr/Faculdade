@@ -14,7 +14,7 @@ Alunos e suas respectivas matrículas:
  */
 
 public class Leitura1 {
-    public void leitura1() {
+    public static void main(String[] args) {
 
         // Armazena o caminho para o arquivo em um atributo
         String caminhoArquivo = "C:\\Users\\Nicolas\\Downloads\\Clientes2.txt";
